@@ -1,0 +1,36 @@
+.login-3{
+    width: 40%;
+    height: 100%;
+    background-color: coral;
+    color: rgb(245, 245, 245);
+    text-align: center;
+    display: grid;
+    place-items: center;
+}
+.login-4 {
+    width: 60%;
+    display: grid;
+    place-items: center;
+    color: rgb(97, 97, 97);
+
+}
+.signup-sec{
+    height: 350px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+   
+}
+.checkbox-div{
+    display: flex;
+    gap: 15px;
+}
+#form-sec{
+    display: flex;
+    flex-direction: column;
+    gap:0;   
+}
+.radio-div{
+    display: flex;
+    gap: 10px;
+}
