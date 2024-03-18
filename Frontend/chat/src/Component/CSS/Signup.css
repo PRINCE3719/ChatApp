@@ -34,3 +34,19 @@
     display: flex;
     gap: 10px;
 }
+.input-icon-container {
+    position: relative;
+   }
+   
+   .input-icon-container input {
+    padding-right: 30px; 
+   }
+   
+   .input-icon-container .icon {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+   }
+   

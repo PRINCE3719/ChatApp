@@ -6,10 +6,13 @@ const messageroutes = require("../Backend/routes/messageroutes.js");
 const userRoutes = require("../Backend/routes/userRoutes.js");
 const connectdb = require("./database/database.js");
 const cookieparse = require("cookie-parser");
+const cors = require("cors");
 
 
 dotenv.config();
 app.use(cookieparse())
+
+app.use(cors())
 
 const port = process.env.PORT;
 
