@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import "../CSS/Signup.css"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+import { useAuthcontext } from '../../Context/Authcontext';
 
 
 
@@ -12,6 +14,10 @@ const signupurl = "http://localhost:5000/auth/signup";
 const Signup = () => {
 
   const [showpass, setshowpass] = useState(false);
+  const navigate = useNavigate();
+  const{authuser,setauthuser} =useAuthcontext()
+
+  
 
 
 
@@ -26,6 +32,9 @@ const Signup = () => {
     if (!data.name || !data.email || !data.password || !data.gender) {
       toast.error('Please fill out all fields.', {
         theme: "dark",
+        autoClose:2000,
+        pauseOnHover:false,
+        pauseOnFocusLoss:false
       });
       return;
     }
@@ -47,29 +56,38 @@ const Signup = () => {
       }
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
+        if (!res.ok) {
+          return res.json().then(errormsg=>{
+            throw new Error(errormsg.error);
+          });
         }
+        return res.json();
       })
       .then((data) => {
         if(data){
           toast.success('Signup successful!', {
             position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
+            autoClose: 2000,
+            hideProgressBar: true,
             closeOnClick: true,
             draggable: true,
             progress: undefined,
             theme: "dark",
           });
+          sessionStorage.setItem("chat-user",JSON.stringify(data));
+          setauthuser(data);
+          navigate("/");
+          
         }
-        else{
-          toast.error("error while signing in");
-        }
+       
         console.log(data);
       })
       .catch((error) => {
-        toast.error(error.message);
+        toast.error(error.message,{
+           autoClose: 3000,
+           theme:"dark",
+           pauseOnHover:false
+        });
       });
   }
 

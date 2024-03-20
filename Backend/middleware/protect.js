@@ -4,9 +4,8 @@ const User = require("../models/usermodel.js")
  
 const protect = async (req,res,next)=>{
     try {
-        const token = req.cookies.jwt;
-
-        console.log(token);
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1];
 
         if(!token){
             return res.status(401).json({error:"Unauthorized - No token"})

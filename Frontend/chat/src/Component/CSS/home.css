@@ -2,7 +2,7 @@
     background:transparent;
     backdrop-filter: blur(15px);
     height: 80vh;
-    width: 65%;
+    width: 68%;
     display: flex;
     border-radius: 0.3rem;
     
@@ -39,25 +39,28 @@
     margin: 10px 10px;
     height: 53vh;
     overflow: auto;
-    gap: 20px;
+    gap: 5px;
+    
+    cursor: pointer;
 }
 .user-div{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: antiquewhite;
+    gap: 22px;
     border-radius: 0.3rem;
+    padding-inline: 10px;
+    
 
 }
+
 .user-name p{
     margin: 0;
-    padding-right: 95px;
     font-size: 17px;
 }
 .user-image{
-    height: 55px;
-    width: 55px;
-    background-color: black;
+    height: 50px;
+    width: 50px;
+    display: flex;
     border-radius: 50%;
 }
 .logout-div{
@@ -72,7 +75,7 @@
 .name-head{
     width: 100%;
     height: 7vh;
-    background-color: aqua;
+    background-color: white;
     display: flex;
     align-items: center;
 }
@@ -84,7 +87,7 @@
 .chat-section{
     width: 100%;
 
-    height: 73vh;
+    height: 60vh;
     padding-inline: 10px;
 }
 .chat-input input{
@@ -97,7 +100,7 @@
 .chat-input{
     background-color: white;
     border-radius: 1rem;
-    margin-top: 20px;
+    margin-top: 10px;
 
 }
 .chat-display{
@@ -113,5 +116,35 @@
 .div-in-conv{
     display: grid;
     place-items: center;
-    width: 65%;
+    height: 100%;
+}
+.chat-space{
+    float: right;
+    /* height: 30px; */
+    /* width: 250px; */
+    border-radius: 0.2rem;
+    background-color: white;
+    margin-top: 10px;
+}
+.chat-space p {
+    float: right;
+    margin: 0;
+    padding: 7px;
+}
+.chat-space-2{
+    float: left;
+    border-radius: 0.2rem;
+    background-color: white;
+    margin-top: 50px;
+
+}
+.chat-space-2 p{
+
+    margin: 0;
+    padding: 7px;
+}
+.streak{
+    height: 1px;
+    background-color: rgba(255,255,255,.4);
+    margin-inline: 10px;
 }

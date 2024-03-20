@@ -12,7 +12,13 @@ const cors = require("cors");
 dotenv.config();
 app.use(cookieparse())
 
-app.use(cors())
+const corsOptions = {
+    origin: 'http://localhost:3000', // Replace with your actual frontend origin
+    credentials: true,
+};
+
+
+app.use(cors(corsOptions));
 
 const port = process.env.PORT;
 
