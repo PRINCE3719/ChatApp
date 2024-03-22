@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./CSS/home.css"
 import Userhook from '../Context/customhooks/Userhook'
 import Userinfo from '../Zustand/Userinfo';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
@@ -11,8 +12,9 @@ const Side = () => {
     const navigate = useNavigate();
 
     const{user}= Userhook();
-
-    const{selectedcoversation,setselectedcoversation} = Userinfo()
+    console.log(user);
+    const{selectedcoversation,setselectedcoversation} = Userinfo();
+    const [search,setsearch] = useState("");
    
 
    
@@ -25,16 +27,35 @@ const Side = () => {
         
     }
 
+    const handlesubmit = (e)=>{
+        e.preventDefault()
+        if(!search) return;
+        if(search.length < 3){
+            toast.error("error");
+        }
+        const conversation = user.find((c)=>c.name.toLowerCase().includes(search.toLowerCase()));
+        if(conversation){
+            setselectedcoversation(conversation);
+            setsearch('');
+        }
+        else{
+            toast.error("no user");
+        }
+    }
+
   
 
     
     
     return (
         <div className='sidebar-div'>
-            <div className='input-search'>
-                <input type='text' name='search' id='search' placeholder='search..' autoComplete='off' />
+            <form onSubmit={handlesubmit}>
+            <div className='input-search' >
+                <input type='text' name='search' id='search' placeholder='search..' autoComplete='off' style={{color:"white"}} value={search} onChange={(e)=>setsearch(e.target.value)}/>
                 <div className='icon-div'><i class="fa-solid fa-magnifying-glass" style={{ color: "#000000;" }}></i></div>
             </div>
+            </form>
+            
 
             <div className='user-section'>
                    {user.map((item,index)=>{

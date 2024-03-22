@@ -1,13 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./CSS/home.css"
 import Noconversation from './Noconversation'
-import Userinfo from '../Zustand/Userinfo'
+import 'react-toastify/dist/ReactToastify.css';
+import Chat from './Chat';
+// import { toast } from 'react-toastify';
+import Sendmsghook from '../Context/customhooks/Sendmsghook';
+import Userinfo from '../Zustand/Userinfo';
+
 
 
 
 const Conversation = () => {
 
-  const { selectedcoversation, setselectedcoversation } = Userinfo()
+ const [message,setmessage] = useState("");
+
+ const{selectedcoversation}=Userinfo();
+
+ const{sendmsg}=Sendmsghook();
+
+ 
+ 
+
+
+  const handlesubmit= async (e) => {
+    e.preventDefault()
+    if(!message) return;
+    await sendmsg(message);
+    setmessage("");
+ 
+  }
+
+
+
+
 
 
 
@@ -19,17 +44,13 @@ const Conversation = () => {
           <div className='name-head'>
             <p>To: {selectedcoversation.name}</p>
           </div>
-          <div className='chat-section'>
-            <div className="chat chat-start pt-2">
-              <div className="chat-bubble">It's over Anakin</div>
-            </div>
-            <div className="chat chat-end">
-              <div className="chat-bubble">You underestimate my power!</div>
-            </div>
-          </div>
+          <Chat/>
           <div className='chat-input'>
-            <input type='text' id='text' name='text' />
-            <i class="fa-regular fa-paper-plane" style={{ color: "#000000;" }}></i>
+            <form className='msg-form' onSubmit={handlesubmit}>
+              <input type='text' id='text' name='text' value={message} onChange={(e)=>setmessage(e.target.value)} autoComplete='off'/>
+              <i class="fa-regular fa-paper-plane" style={{ color: "#000000;" }}></i>
+            </form>
+
           </div>
         </>
       )}
@@ -40,5 +61,6 @@ const Conversation = () => {
 
   )
 }
+
 
 export default Conversation

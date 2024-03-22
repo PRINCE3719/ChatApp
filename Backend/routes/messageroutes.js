@@ -56,11 +56,18 @@ Router.get("/:id",protect,async(req,res)=>{
         const senderId = req.user._id;
 
     
-        const coversation = await Conversation.findOne({
+        const conversation = await Conversation.findOne({
             participants:{$all:[senderId,id]},
         }).populate("messages");
 
-        res.status(200).json(coversation.messages);
+        if (conversation && conversation.messages && conversation.messages.length > 0) {
+            
+            res.status(200).json(conversation.messages);
+        } else {
+           
+            res.status(200).json([]);
+        }
+
     
         
     } catch (error) {

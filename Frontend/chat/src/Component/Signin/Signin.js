@@ -66,6 +66,7 @@ const Signin = () => {
                         progress: undefined,
                         theme: "dark",
                     });
+                   
 
                     sessionStorage.setItem("token", data.token);
                     navigate("/home")
@@ -101,7 +102,7 @@ const Signin = () => {
                 <div className='login-2'>
                     <h4>Login</h4>
                     <div className='login-form'>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className='login-form'>
                             <div className='input-div'>
                                 <label>username</label>
                                 <input type='text' id='email' name='email' autoComplete='off' />

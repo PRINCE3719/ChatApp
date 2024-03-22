@@ -3,7 +3,7 @@ import Side from './Side'
 import Conversation from './Conversation'
 import back from "../Component/Assets/pexels-tranmautritam-245032.jpg"
 import "./CSS/home.css"
-import Noconversation from './Noconversation'
+
 
 const Home = () => {
     return (

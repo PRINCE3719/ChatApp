@@ -1,4 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+
+import Decodetoken from "./customhooks/Decodetoken";
+
 
 export const Authcontext = createContext();
 
@@ -8,8 +11,17 @@ export const useAuthcontext = ()=>{
 
 export const Authcontextprovider = ({ children })=>{
 
-    const [authuser,setauthuser] = useState(JSON.parse(sessionStorage.getItem("chat-user")) || null)
+    const decodeduser = Decodetoken();
+
+    const [authuser,setauthuser] = useState((decodeduser) || null)
+
+    useEffect(()=>{
+        setauthuser(decodeduser);
+    },[decodeduser]);
+
+    
     return <Authcontext.Provider value={{authuser,setauthuser}}>
         {children}
         </Authcontext.Provider>;
 }
+

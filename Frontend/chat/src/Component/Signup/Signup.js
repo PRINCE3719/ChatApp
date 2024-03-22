@@ -15,7 +15,7 @@ const Signup = () => {
 
   const [showpass, setshowpass] = useState(false);
   const navigate = useNavigate();
-  const{authuser,setauthuser} =useAuthcontext()
+  const{setauthuser} =useAuthcontext()
 
   
 
@@ -74,7 +74,7 @@ const Signup = () => {
             progress: undefined,
             theme: "dark",
           });
-          sessionStorage.setItem("chat-user",JSON.stringify(data));
+          localStorage.setItem("chat-user",JSON.stringify(data));
           setauthuser(data);
           navigate("/");
           

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 const userurl = "http://localhost:5000/users/all";
@@ -23,7 +23,7 @@ const Userhook = () => {
         getusers();
 
 
-    }, [])
+    }, [token])
 
     return {user};
 
