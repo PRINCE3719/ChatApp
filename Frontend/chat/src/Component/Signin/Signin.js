@@ -69,6 +69,7 @@ const Signin = () => {
                    
 
                     sessionStorage.setItem("token", data.token);
+                
                     navigate("/home")
                    
 

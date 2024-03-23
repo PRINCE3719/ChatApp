@@ -1,14 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import Getmessagehook from '../Context/customhooks/Getmessagehook';
-import { useAuthcontext } from '../Context/Authcontext';
 import { extractTime } from '../Context/customhooks/extractTime';
-// import Userinfo from '../Zustand/Userinfo';
+import Userinfo from '../Zustand/Userinfo';
+
 
 const Chat = () => {
     const { messages } = Getmessagehook();
-    const { authuser } = useAuthcontext();
+ 
+     const {authUser,initializeAuthUser} = Userinfo();
+     console.log(authUser);
+    
     const lastmessageref = useRef();
-    console.log(authuser);
+
+    useEffect(() => {
+        initializeAuthUser();
+    }, [initializeAuthUser]);
+
 
     useEffect(()=>{
         setTimeout(() => {
@@ -20,7 +27,7 @@ const Chat = () => {
    
 
 
-    // const { selectedcoversation } = Userinfo();
+  
 
     
 
@@ -29,7 +36,7 @@ const Chat = () => {
         <div className='chat-section h-[400px] overflow-y-auto'>
             {messages.map((item, index) => {
                 
-                const fromMe = item.senderId === authuser?.id;
+                const fromMe = item.senderId === authUser?.id;
                 const chatclass = fromMe ? "chat-end" :"chat-start";
                 const chatcolor = fromMe ? "bg-primary":"";
                 const formatedTime = extractTime(item.createdAt);

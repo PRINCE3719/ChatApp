@@ -19,4 +19,20 @@ router.get("/all",protect,async(req,res)=>{
     }
 })
 
+router.get("/:id",protect,async(req,res)=>{
+    try {
+        const currentuser = req.params.id;
+      
+        const finduser  = await User.findById(currentuser);
+        if(finduser){
+            res.status(200).json({finduser});
+        }
+        else{
+            res.status(400).json({message:"NO user found"});
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+})
+
 module.exports = router;

@@ -20,7 +20,7 @@ const Side = () => {
    
     
     const logout = ()=>{
-        
+        Userinfo.getState().Logout();
        sessionStorage.removeItem("token");
         navigate('/');
        
