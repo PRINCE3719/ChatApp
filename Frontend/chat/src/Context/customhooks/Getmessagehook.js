@@ -9,7 +9,7 @@ const getmsgurl = "http://localhost:5000/message/";
 const Getmessagehook = () => {
     const { messages, setmessages, selectedcoversation } = Userinfo();
     
-    console.log(messages);
+
 
     const token = sessionStorage.getItem("token");
     
@@ -37,7 +37,7 @@ const Getmessagehook = () => {
                     }
                 });
                 const data = await res.json();
-                console.log(data,"helkllo");
+              
                 if (data.error) throw new Error(data.error);
 
                 // Update messages state with fetched data

@@ -80,7 +80,7 @@ const Signup = () => {
           
         }
        
-        console.log(data);
+      
       })
       .catch((error) => {
         toast.error(error.message,{

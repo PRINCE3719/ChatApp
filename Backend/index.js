@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express();
+
 const dotenv = require("dotenv")
 const authroutes = require("../Backend/routes/authroutes.js");
 const messageroutes = require("../Backend/routes/messageroutes.js");
@@ -7,13 +7,17 @@ const userRoutes = require("../Backend/routes/userRoutes.js");
 const connectdb = require("./database/database.js");
 const cookieparse = require("cookie-parser");
 const cors = require("cors");
+const {app, server} = require("./Socket/Socket.js");
+
 
 
 dotenv.config();
+
+app.use(express.json());
 app.use(cookieparse())
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your actual frontend origin
+    origin: 'http://localhost:3000', 
     credentials: true,
 };
 
@@ -34,7 +38,7 @@ app.use("/message",messageroutes);
 
 app.use("/users",userRoutes);
 
-app.listen(port,()=> {
+server.listen(port,()=> {
     connectdb();
     console.log(`server running on ${port}`);
 

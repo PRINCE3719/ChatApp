@@ -20,7 +20,6 @@ const Signin = () => {
         const formdata = new FormData(e.target);
         const data = Object.fromEntries(formdata)
 
-        console.log(data);
 
         if (!data.email || !data.password) {
             toast.error("Please fill out all the fields", {
@@ -49,7 +48,7 @@ const Signin = () => {
             .then((response) => {
                 if (!response.ok) {
                     return response.json().then(errmsg => {
-                        console.log(errmsg);
+                       
                         throw new Error(errmsg.token);
                     })
                 }
@@ -75,7 +74,7 @@ const Signin = () => {
 
 
                 }
-                console.log(data);
+               
 
             })
             .catch((error) => {

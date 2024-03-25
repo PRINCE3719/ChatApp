@@ -6,7 +6,7 @@ const loggeduser = "http://localhost:5000/users/";
 const Userwithidhook = () => {
     const token = sessionStorage.getItem("token");
     const { authUser, initializeAuthUser } = Userinfo();
-    const [loggedUserData, setLoggedUserData] = useState(null); // Renamed to avoid confusion
+    const [loggedUserData, setLoggedUserData] = useState(null); 
 
     const userid = authUser?.id;
 
@@ -16,8 +16,7 @@ const Userwithidhook = () => {
 
     useEffect(() => {
         const getParticularuser = async () => {
-            console.log(`Fetching user with ID: ${userid}`);
-            console.log(`Token: ${token}`);
+           
             try {
                 const res = await fetch(`${loggeduser}${userid}`, {
                     method: "GET",
@@ -29,12 +28,12 @@ const Userwithidhook = () => {
                 if (!res.ok) {
                     throw new Error(`Fetch error: ${res.statusText}`);
                 }
-                // Check if the response is JSON before parsing
+                
                 const contentType = res.headers.get("content-type");
                 if (contentType && contentType.indexOf("application/json") !== -1) {
                     const data = await res.json();
-                    console.log('Fetched data:', data);
-                    setLoggedUserData(data); // Updated to use the new state variable
+                   
+                    setLoggedUserData(data); 
                 } else {
                     console.error('Response is not JSON:', await res.text());
                 }
@@ -43,9 +42,9 @@ const Userwithidhook = () => {
             }
         }
         getParticularuser();
-    }, [token, userid]); // Keeping userid as a dependency
+    }, [token, userid]); 
 
-    return { loggedUserData }; // Return the state variable instead of the constant
+    return { loggedUserData }; 
 }
 
 export default Userwithidhook;

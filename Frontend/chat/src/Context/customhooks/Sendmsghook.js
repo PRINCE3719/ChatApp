@@ -8,7 +8,7 @@ const msgurl = "http://localhost:5000/message/send/"
 const Sendmsghook = () => {
   
     const { selectedcoversation, messages, setmessages } = Userinfo()
-    console.log("sending message",messages);
+
         
     const token = sessionStorage.getItem("token");
 
