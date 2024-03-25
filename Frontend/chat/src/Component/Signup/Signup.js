@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import "../CSS/Signup.css"
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
+
 import { useNavigate } from 'react-router-dom';
-import { useAuthcontext } from '../../Context/Authcontext';
+
 
 
 
@@ -15,9 +15,9 @@ const Signup = () => {
 
   const [showpass, setshowpass] = useState(false);
   const navigate = useNavigate();
-  const{setauthuser} =useAuthcontext()
 
-  
+
+
 
 
 
@@ -31,10 +31,10 @@ const Signup = () => {
     // Ensure all fields are filled
     if (!data.name || !data.email || !data.password || !data.gender) {
       toast.error('Please fill out all fields.', {
-        theme: "dark",
-        autoClose:2000,
-        pauseOnHover:false,
-        pauseOnFocusLoss:false
+        style: {
+          background: '#333',
+          color: '#fff'
+        }
       });
       return;
     }
@@ -57,14 +57,14 @@ const Signup = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          return res.json().then(errormsg=>{
+          return res.json().then(errormsg => {
             throw new Error(errormsg.error);
           });
         }
         return res.json();
       })
       .then((data) => {
-        if(data){
+        if (data) {
           toast.success('Signup successful!', {
             position: "top-right",
             autoClose: 2000,
@@ -74,19 +74,20 @@ const Signup = () => {
             progress: undefined,
             theme: "dark",
           });
-          localStorage.setItem("chat-user",JSON.stringify(data));
-          setauthuser(data);
+          localStorage.setItem("chat-user", JSON.stringify(data));
+
           navigate("/");
-          
+
         }
-       
-      
+
+
       })
       .catch((error) => {
-        toast.error(error.message,{
-           autoClose: 3000,
-           theme:"dark",
-           pauseOnHover:false
+        toast.error(error.message, {
+       style:{
+        background: '#333',
+        color: '#fff'
+       }
         });
       });
   }
@@ -97,16 +98,8 @@ const Signup = () => {
   return (
     <div className='login'>
       <div className='login-page'>
-        <div className='login-3'>
-          <div className='signup-page'>
-            <h3>Welcome</h3>
-            <h3>Join us</h3>
-            <p>Already have an account?<Link to='/' style={{ textDecoration: "none" }}>Signin</Link></p>
-          </div>
-
-        </div>
         <div className='login-4'>
-          <h3>Sign Up</h3>
+          <h3 className='text-lg font-medium text-xl'>Sign Up</h3>
           <div className='signup-sec'>
             <form id='form-sec' onSubmit={authregister}>
               <div className='input-div'>
@@ -128,11 +121,13 @@ const Signup = () => {
               <label>Gender</label>
               <div className='checkbox-div'>
                 <div className='radio-div'>
-                  <input type='radio' id='checkbox' value="male" name='gender' />
+
+                  <input type="radio" name="gender" className="radio radio-info" id='checkbox' value='male' />
                   <label>Male</label>
                 </div>
                 <div className='radio-div'>
-                  <input type='radio' id='checkbox0' value="female" name='gender' />
+
+                  <input type="radio" name="gender" className="radio radio-info" id='checkbox0' value='female' />
                   <label>Female</label>
                 </div>
               </div>
@@ -140,6 +135,9 @@ const Signup = () => {
 
               <button id='signin-butn'>Sign up</button>
             </form>
+            <div>
+              <h2 className='text-center mt-3'>Already have an account ? <Link to='/'>Signin</Link></h2>
+            </div>
           </div>
         </div>
       </div>

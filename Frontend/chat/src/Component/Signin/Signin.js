@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import "../CSS/Login.css"
 import { Link } from "react-router-dom"
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import toast from 'react-hot-toast';
 
 const loginurl = "http://localhost:5000/auth/signin";
 
@@ -23,9 +21,10 @@ const Signin = () => {
 
         if (!data.email || !data.password) {
             toast.error("Please fill out all the fields", {
-                theme: "dark",
-                autoClose: 2000,
-                pauseOnHover: false,
+                style: {
+                    background: '#333',
+                    color: '#fff'
+                }
             });
             return;
 
@@ -48,7 +47,7 @@ const Signin = () => {
             .then((response) => {
                 if (!response.ok) {
                     return response.json().then(errmsg => {
-                       
+
                         throw new Error(errmsg.token);
                     })
                 }
@@ -57,24 +56,21 @@ const Signin = () => {
             .then((data) => {
                 if (data.token) {
                     toast.success('Login successful!', {
-                        position: "top-right",
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
+                        style: {
+                            background: '#333',
+                            color: '#fff'
+                        }
                     });
-                   
+
 
                     sessionStorage.setItem("token", data.token);
-                
+
                     navigate("/home")
-                   
+
 
 
                 }
-               
+
 
             })
             .catch((error) => {
@@ -95,12 +91,9 @@ const Signin = () => {
     return (
         <div className='login'>
             <div className='login-page'>
-                <div className='login-1'>
-                    <h3>Welcome back</h3>
-                    <p>Don't have an account?<Link to='/signup' style={{ textDecoration: "none" }}>Signup</Link></p>
-                </div>
+
                 <div className='login-2'>
-                    <h4>Login</h4>
+                    <h3 className='text-center text-2xl font-medium'>Login</h3>
                     <div className='login-form'>
                         <form onSubmit={handleSubmit} className='login-form'>
                             <div className='input-div'>
@@ -116,6 +109,9 @@ const Signin = () => {
                             </div>
                             <button id='signin-butn'>Sign in</button>
                         </form>
+                        <div>
+                            <h2 className='text-center mb-5'>Don't have an account ? <Link to='/Signup'>Signup</Link></h2>
+                        </div>
                     </div>
                 </div>
             </div>

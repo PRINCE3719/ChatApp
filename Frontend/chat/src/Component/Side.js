@@ -3,7 +3,7 @@ import "./CSS/home.css"
 import Userhook from '../Context/customhooks/Userhook'
 import Userinfo from '../Zustand/Userinfo';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { useSocketcontext } from '../Context/Socketcontext';
 
 
@@ -13,11 +13,11 @@ const Side = () => {
     const navigate = useNavigate();
 
     const { user } = Userhook();
-    
+
     const { selectedcoversation, setselectedcoversation } = Userinfo();
 
-    const{online} = useSocketcontext();
-    
+    const { online } = useSocketcontext();
+
 
 
     const [search, setsearch] = useState("");
@@ -37,7 +37,12 @@ const Side = () => {
         e.preventDefault()
         if (!search) return;
         if (search.length < 3) {
-            toast.error("error");
+            toast.error("more than 3 character needed!",{
+                style:{
+                    background: '#333',
+                    color: '#fff'
+                }
+            });
         }
         const conversation = user.find((c) => c.name.toLowerCase().includes(search.toLowerCase()));
         if (conversation) {
@@ -45,7 +50,12 @@ const Side = () => {
             setsearch('');
         }
         else {
-            toast.error("no user");
+            toast.error("no user", {
+                style: {
+                    background: '#333',
+                    color: '#fff'
+                }
+            });
         }
     }
 
@@ -57,7 +67,7 @@ const Side = () => {
         <div className='sidebar-div'>
             <form onSubmit={handlesubmit}>
                 <div className='input-search' >
-                    <input type='text' name='search' id='search' placeholder='search..' autoComplete='off' style={{ color: "white" }} value={search} onChange={(e) => setsearch(e.target.value)} />
+                    <input type='text' name='search' id='search' placeholder='search..' autoComplete='off' style={{ color: "black" }} value={search} onChange={(e) => setsearch(e.target.value)} />
                     <div className='icon-div'><i class="fa-solid fa-magnifying-glass" style={{ color: "#000000;" }}></i></div>
                 </div>
             </form>
@@ -73,9 +83,9 @@ const Side = () => {
                     return (
                         <>
                             <div className={`user-div ${bgColorClass}`} onClick={() => setselectedcoversation(item)}>
-                                <div className={`avatar ${isonline ? 'online':""}`}>
+                                <div className={`avatar ${isonline ? 'online' : ""}`}>
                                     <div className="w-14 rounded-full">
-                                        <img src={item.profilepic} />
+                                        <img src={item.profilepic} alt='' />
                                     </div>
                                 </div>
                                 <div className='user-name'>

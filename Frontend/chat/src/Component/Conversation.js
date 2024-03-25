@@ -3,7 +3,7 @@ import "./CSS/home.css"
 import Noconversation from './Noconversation'
 import 'react-toastify/dist/ReactToastify.css';
 import Chat from './Chat';
-// import { toast } from 'react-toastify';
+
 import Sendmsghook from '../Context/customhooks/Sendmsghook';
 import Userinfo from '../Zustand/Userinfo';
 
@@ -38,10 +38,10 @@ const Conversation = () => {
 
   return (
 
-    <div className='conversation-div' style={{ width: "65%" }}>
+    <div className='conversation-div' style={{ width: "70%" }}>
       {!selectedcoversation ? (<Noconversation />) : (
         <>
-          <div className='name-head'>
+          <div className='name-head mb-1'>
             <p>To: {selectedcoversation.name}</p>
           </div>
           <Chat/>

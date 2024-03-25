@@ -1,12 +1,4 @@
-.login-3{
-    width: 40%;
-    height: 100%;
-    background-color: coral;
-    color: rgb(245, 245, 245);
-    text-align: center;
-    display: grid;
-    place-items: center;
-}
+
 .login-4 {
     width: 60%;
     display: grid;

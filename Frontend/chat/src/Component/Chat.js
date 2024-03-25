@@ -43,7 +43,7 @@ const Chat = () => {
                 
                 const fromMe = item.senderId === authUser?.id;
                 const chatclass = fromMe ? "chat-end" :"chat-start";
-                const chatcolor = fromMe ? "bg-primary":"";
+                const chatcolor = fromMe ? "bg-sky-400":"bg-gray-600";
                 const formatedTime = extractTime(item.createdAt);
                 return (
                     <div className={`chat ${chatclass}`}  key={item._id}>
@@ -55,7 +55,7 @@ const Chat = () => {
             })}
            
             {messages.length === 0 && (
-                <p className='text-center'>Message to start a conversation</p>
+                <p className='text-center text-xl'>Message to start a new conversation</p>
             )}
         </div>
     )

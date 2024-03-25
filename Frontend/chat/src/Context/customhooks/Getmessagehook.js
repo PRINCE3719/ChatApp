@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import Userinfo from '../../Zustand/Userinfo';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
 
 
 const getmsgurl = "http://localhost:5000/message/";

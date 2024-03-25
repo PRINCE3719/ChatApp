@@ -3,14 +3,16 @@ import './App.css';
 import {Routes,Route} from "react-router-dom"
 import Signin from './Component/Signin/Signin';
 import Signup from './Component/Signup/Signup';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Toaster } from 'react-hot-toast';
 import Home from './Component/Home';
+
 
 
 
 function App() {
 
+  
+   
   
   return (
     <div className="App">
@@ -19,7 +21,8 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path = "/home" element={<Home/>}/>
       </Routes>
-      <ToastContainer/>
+      <Toaster/>
+      
       
     </div>
   );

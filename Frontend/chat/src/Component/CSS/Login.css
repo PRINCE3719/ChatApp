@@ -1,8 +1,7 @@
 .login-page {
-    width: 65vw;
+    padding: 52px;
     height: 80vh;
     background-color: white;
-    display: flex;
     border-radius: 0.3rem;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
@@ -12,29 +11,20 @@
     display: grid;
     place-items: center;
     height: 100vh;
-    /* background-color: rgb(238, 235, 235); */
+    
 }
 
-.login-1 {
-    width: 40%;
-    height: 100%;
-    background-color: coral;
-    color: rgb(245, 245, 245);
-    text-align: center;
-}
+
 
 .login-2 {
-    width: 60%;
+    
     display: grid;
     place-items: center;
     color: rgb(97, 97, 97);
 
 }
 
-.login-2 h4 {
-    font-size: 30px;
-    padding-top: 30px;
-}
+
 
 .login-1 h3 {
 
@@ -73,7 +63,7 @@
 }
 
 #signin-butn {
-    background-color: coral;
+    background-color: #00B5FF;
     color: rgb(245, 245, 245);
     border-radius: 0.3rem;
     border: 0;

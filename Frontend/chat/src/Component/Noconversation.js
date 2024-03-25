@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import "./CSS/home.css"
-import Userinfo from '../Zustand/Userinfo'
+
 import Userwithidhook from '../Context/customhooks/Userwithidhook'
 
 
