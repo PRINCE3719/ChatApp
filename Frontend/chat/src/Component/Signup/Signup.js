@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const signupurl = "https://backend-chat-1.onrender.com/auth/signup";
+const signupurl = "https://backend-chat-2.onrender.com/auth/signup";
 
 
 const Signup = () => {
