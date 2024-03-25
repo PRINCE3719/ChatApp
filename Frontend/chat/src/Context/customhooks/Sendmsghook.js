@@ -2,7 +2,7 @@
 import Userinfo from '../../Zustand/Userinfo'
 import toast from 'react-hot-toast';
 
-const msgurl = "http://localhost:5000/message/send/"
+const msgurl = "https://backend-chat-1.onrender.com/message/send/"
 
 const Sendmsghook = () => {
   

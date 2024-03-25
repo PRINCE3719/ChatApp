@@ -3,7 +3,7 @@ import Userinfo from '../../Zustand/Userinfo';
 import toast from 'react-hot-toast';
 
 
-const getmsgurl = "http://localhost:5000/message/";
+const getmsgurl = "https://backend-chat-1.onrender.com/message/";
 
 const Getmessagehook = () => {
     const { messages, setmessages, selectedcoversation } = Userinfo();

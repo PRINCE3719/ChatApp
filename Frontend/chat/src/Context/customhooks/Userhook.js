@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 
-const userurl = "http://localhost:5000/users/all";
+const userurl = "https://backend-chat-1.onrender.com/users/all";
 
 const Userhook = () => {
     const [user, setuser] = useState([]);

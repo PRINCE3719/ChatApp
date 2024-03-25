@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Userinfo from "../../Zustand/Userinfo";
 
-const loggeduser = "http://localhost:5000/users/";
+const loggeduser = "https://backend-chat-1.onrender.com/users/";
 
 const Userwithidhook = () => {
     const token = sessionStorage.getItem("token");
